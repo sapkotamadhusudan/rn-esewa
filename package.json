@@ -1,6 +1,6 @@
 {
   "name": "rn-esewa",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A library providing Esewa payment integration to react native applications",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -34,7 +34,9 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "esewa",
+    "payment sdk"
   ],
   "repository": "https://github.com/sapkotamadhusudan/rn-esewa",
   "author": "Madhusudan Sapkota <sapkotamadhusudan99@gmail.com> (https://github.com/sapkotamadhusudan)",
