@@ -1,9 +1,8 @@
 #import <React/RCTBridgeModule.h>
+#import <Foundation/Foundation.h>
 
-@interface RCT_EXTERN_MODULE(RnEsewa, NSObject)
+@interface RCT_EXTERN_MODULE(RNEsewaSDK, NSObject)
 
-RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(initiatePayment:(NSDictionary *)options callback:(RCTResponseSenderBlock)callback)
 
 @end

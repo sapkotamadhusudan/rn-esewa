@@ -1,31 +1,51 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-import { StyleSheet, View, Text } from 'react-native';
-import RnEsewa from 'rn-esewa';
+import eSewaPaymentSDK, { eSewaOptions, eSewaPaymentResponse } from 'rn-esewa';
 
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+const options: eSewaOptions = {
+  isDevelopment: true,
+  clientId: 'JB0BBQ4aD0UqIThFJwAKBgAXEUkEGQUBBAwdOgABHD4DChwUAB0R ',
+  clientSecret: 'BhwIWQQADhIYSxILExMcAgFXFhcOBwAKBgAXEQ==',
+  productId: new Date().getTime().toString(),
+  productName: 'Payment for RN-Esewa Module',
+  productPrice: '1',
+  callbackUrl: 'https://your-backend-api.com',
+};
 
-  React.useEffect(() => {
-    RnEsewa.multiply(3, 7).then(setResult);
-  }, []);
+const App = () => {
+  return <EsewaPaymentComponent />;
+};
+
+const EsewaPaymentComponent = () => {
+  const [result, setResult] = useState<any>('');
+
+  const payWithEsewa = () => {
+    const paymentCallback = (response: eSewaPaymentResponse) => {
+      const { completed, proofOfPayment, didCancel, errorMessage } = response;
+
+      if (completed) {
+        setResult(proofOfPayment);
+      } else if (didCancel) {
+        setResult('Payment is canceled by user');
+      } else {
+        setResult(errorMessage + ' ' + proofOfPayment + ' ');
+      }
+    };
+
+    eSewaPaymentSDK.initiatePayment(options, paymentCallback);
+  };
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Payment Result: ${result}</Text>
+      <Button title="Pay with Esewa" onPress={payWithEsewa} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
 });
+
+export default App;
