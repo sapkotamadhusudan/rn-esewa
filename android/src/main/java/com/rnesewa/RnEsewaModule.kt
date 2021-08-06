@@ -28,7 +28,7 @@ class RnEsewaModule(reactContext: ReactApplicationContext) :
   }
 
   override fun getName(): String {
-    return "RnEsewa"
+    return "RNEsewaSDK"
   }
 
   @ReactMethod
@@ -36,7 +36,7 @@ class RnEsewaModule(reactContext: ReactApplicationContext) :
     options: ReadableMap,
     callback: Callback
   ) {
-    Log.i(TAG, "pay $options")
+    Log.i(TAG, "initiatePayment")
 
     if (this.callback != null) {
       responseHelper.invokeError(callback, "Previous payment is in progress")
