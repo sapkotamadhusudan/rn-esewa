@@ -112,7 +112,11 @@ class RnEsewaModule(reactContext: ReactApplicationContext) :
     when (resultCode) {
       Activity.RESULT_OK -> {
         Log.d(TAG, "onActivityResult : RESULT_OK")
-        val proofOfPayment = JSONObject(data?.getStringExtra(ESewaPayment.EXTRA_RESULT_MESSAGE))
+        val proofOfPayment = try {
+          JSONObject(data?.getStringExtra(ESewaPayment.EXTRA_RESULT_MESSAGE).orEmpty())
+        } catch (e: Exception) {
+          JSONObject()
+        }
         Log.i("Proof of Payment", proofOfPayment.toString())
 
         responseHelper.putBoolean("completed", true)
@@ -122,11 +126,20 @@ class RnEsewaModule(reactContext: ReactApplicationContext) :
       }
       ESewaPayment.RESULT_EXTRAS_INVALID -> {
         Log.d(TAG, "onActivityResult : RESULT_EXTRAS_INVALID")
-        val proofOfPayment = JSONObject(data?.getStringExtra(ESewaPayment.EXTRA_RESULT_MESSAGE))
+        var message = "Provided credentials is invalid"
+        val rawResponse = data?.getStringExtra(ESewaPayment.EXTRA_RESULT_MESSAGE).orEmpty()
+        val proofOfPayment = try {
+          JSONObject(rawResponse).apply {
+            put("errorMessage", "Provided credentials is invalid")
+          }
+        } catch (e: Exception) {
+          message = rawResponse
+          JSONObject()
+        }
         Log.i("Proof of Payment", proofOfPayment.toString())
 
         responseHelper.putBoolean("hasError", true)
-        responseHelper.putString("errorMessage", "Provided credentials is invalid")
+        responseHelper.putString("errorMessage", message)
         responseHelper.putJsonObject("proofOfPayment", proofOfPayment)
         responseHelper.invokeResponse(callback)
         callback = null
