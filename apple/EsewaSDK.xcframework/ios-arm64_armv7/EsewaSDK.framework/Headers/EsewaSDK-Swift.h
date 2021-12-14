@@ -190,6 +190,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -209,6 +210,27 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma clang attribute push(__attribute__((external_source_symbol(language="Swift", defined_in="EsewaSDK",generated_declaration))), apply_to=any(function,enum,objc_interface,objc_category,objc_protocol))
 # pragma pop_macro("any")
 #endif
+
+@class NSCoder;
+
+SWIFT_CLASS("_TtC8EsewaSDK13FormTextField")
+@interface FormTextField : UITextField
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UITraitCollection;
+
+SWIFT_CLASS("_TtC8EsewaSDK12BoxTextField")
+@interface BoxTextField : FormTextField
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (CGRect)textRectForBounds:(CGRect)bounds SWIFT_WARN_UNUSED_RESULT;
+- (CGRect)placeholderRectForBounds:(CGRect)bounds SWIFT_WARN_UNUSED_RESULT;
+- (CGRect)editingRectForBounds:(CGRect)bounds SWIFT_WARN_UNUSED_RESULT;
+- (void)layoutSubviews;
+- (void)traitCollectionDidChange:(UITraitCollection * _Nullable)previousTraitCollection;
+@end
 
 
 SWIFT_CLASS("_TtC8EsewaSDK8EsewaSDK")
@@ -235,9 +257,39 @@ SWIFT_PROTOCOL("_TtP8EsewaSDK23EsewaSDKPaymentDelegate_")
 - (void)onEsewaSDKPaymentErrorWithErrorDescription:(NSString * _Nonnull)errorDescription;
 @end
 
+
+SWIFT_CLASS("_TtC8EsewaSDK15FormElementView")
+@interface FormElementView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+SWIFT_CLASS("_TtC8EsewaSDK18TextFieldValidator")
+@interface TextFieldValidator : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSNumber;
+
+SWIFT_CLASS("_TtC8EsewaSDK18FormTokenValidator")
+@interface FormTokenValidator : TextFieldValidator
+- (void)textFieldDidEdit:(FormTextField * _Nonnull)textField;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8EsewaSDK15HeaderCurveView")
+@interface HeaderCurveView : FormElementView
+@property (nonatomic) IBInspectable CGFloat desiredCurve;
+- (void)layoutSubviews;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC8EsewaSDK18RootViewController")
 @interface RootViewController : UIViewController
@@ -266,6 +318,18 @@ SWIFT_CLASS("_TtC8EsewaSDK24SdkPaymentViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+
+@interface TextFieldValidator (SWIFT_EXTENSION(EsewaSDK)) <UITextFieldDelegate>
+- (void)textFieldDidBeginEditing:(UITextField * _Nonnull)textField;
+- (void)textFieldDidEndEditing:(UITextField * _Nonnull)textField;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (void)textFieldDidEdit:(FormTextField * _Nonnull)textField;
+@end
+
+
 
 
 
@@ -468,6 +532,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
 @import UIKit;
@@ -487,6 +552,27 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma clang attribute push(__attribute__((external_source_symbol(language="Swift", defined_in="EsewaSDK",generated_declaration))), apply_to=any(function,enum,objc_interface,objc_category,objc_protocol))
 # pragma pop_macro("any")
 #endif
+
+@class NSCoder;
+
+SWIFT_CLASS("_TtC8EsewaSDK13FormTextField")
+@interface FormTextField : UITextField
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UITraitCollection;
+
+SWIFT_CLASS("_TtC8EsewaSDK12BoxTextField")
+@interface BoxTextField : FormTextField
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (CGRect)textRectForBounds:(CGRect)bounds SWIFT_WARN_UNUSED_RESULT;
+- (CGRect)placeholderRectForBounds:(CGRect)bounds SWIFT_WARN_UNUSED_RESULT;
+- (CGRect)editingRectForBounds:(CGRect)bounds SWIFT_WARN_UNUSED_RESULT;
+- (void)layoutSubviews;
+- (void)traitCollectionDidChange:(UITraitCollection * _Nullable)previousTraitCollection;
+@end
 
 
 SWIFT_CLASS("_TtC8EsewaSDK8EsewaSDK")
@@ -513,9 +599,39 @@ SWIFT_PROTOCOL("_TtP8EsewaSDK23EsewaSDKPaymentDelegate_")
 - (void)onEsewaSDKPaymentErrorWithErrorDescription:(NSString * _Nonnull)errorDescription;
 @end
 
+
+SWIFT_CLASS("_TtC8EsewaSDK15FormElementView")
+@interface FormElementView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+SWIFT_CLASS("_TtC8EsewaSDK18TextFieldValidator")
+@interface TextFieldValidator : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSNumber;
+
+SWIFT_CLASS("_TtC8EsewaSDK18FormTokenValidator")
+@interface FormTokenValidator : TextFieldValidator
+- (void)textFieldDidEdit:(FormTextField * _Nonnull)textField;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC8EsewaSDK15HeaderCurveView")
+@interface HeaderCurveView : FormElementView
+@property (nonatomic) IBInspectable CGFloat desiredCurve;
+- (void)layoutSubviews;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSBundle;
-@class NSCoder;
 
 SWIFT_CLASS("_TtC8EsewaSDK18RootViewController")
 @interface RootViewController : UIViewController
@@ -544,6 +660,18 @@ SWIFT_CLASS("_TtC8EsewaSDK24SdkPaymentViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+
+@interface TextFieldValidator (SWIFT_EXTENSION(EsewaSDK)) <UITextFieldDelegate>
+- (void)textFieldDidBeginEditing:(UITextField * _Nonnull)textField;
+- (void)textFieldDidEndEditing:(UITextField * _Nonnull)textField;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (void)textFieldDidEdit:(FormTextField * _Nonnull)textField;
+@end
+
+
 
 
 
