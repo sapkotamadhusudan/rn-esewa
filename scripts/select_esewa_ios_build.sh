@@ -26,7 +26,7 @@ current_dir() {
 
 
 get_ios_build_path() {
-  requiredBinaryName="Xcode_$(get_xcode_version) Swift_$(get_swift_version)"
+  requiredBinaryName="Xcode_$(get_xcode_version)-Swift_$(get_swift_version)"
   echo "required: $requiredBinaryName"
 
   : "${exact_binary_path:=}"
@@ -53,8 +53,6 @@ get_ios_build_path() {
       ESEWA_BUILD_DIR="$lazy_binary_path"
       return 0
   fi
-
-  popd
 }
 
 # Select build
