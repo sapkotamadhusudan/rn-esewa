@@ -15,6 +15,7 @@
     "apple",
     "cpp",
     "rn-esewa.podspec",
+    "scripts/select_esewa_ios_build.sh",
     "!lib/typescript/example",
     "!android/build",
     "!ios/build",
