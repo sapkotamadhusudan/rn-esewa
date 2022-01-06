@@ -3668,7 +3668,7 @@ rimraf@~2.2.6:
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
 "rn-esewa@file:..":
-  version "0.1.0"
+  version "0.3.0"
 
 rsvp@^4.8.4:
   version "4.8.5"

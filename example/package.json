@@ -6,7 +6,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start"
+    "start": "react-native start",
+    "postinstall": "sh node_modules/rn-esewa/scripts/select_esewa_ios_build.sh"
   },
   "dependencies": {
     "react": "16.13.1",

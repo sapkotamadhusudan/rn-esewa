@@ -1,6 +1,15 @@
 # rn-esewa
 
-A library provideing esewa payment integration to react native applications
+A library providing esewa payment integration to react native applications
+
+> :warning: **For IOS development**
+> Please add following postinstall script to package.json
+>
+> This verifies and select the suitable esewa sdk of IOS for your environment.
+>
+> ```"postinstall": "sh node_modules/rn-esewa/scripts/select_esewa_ios_build.sh"```
+>
+
 
 ## Installation
 
@@ -15,7 +24,7 @@ yarn add rn-esewa
 ## Usage
 
 ```js
-    
+
     import eSewaPaymentSDK, { eSewaOptions, eSewaPaymentResponse } from 'rn-esewa';
 
     const options = {

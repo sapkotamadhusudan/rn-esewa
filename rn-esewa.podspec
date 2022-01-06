@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.name              = package["name"]
   s.version           = package["version"]
   s.summary           = package["description"]
-  s.homepage          = package["homepage"] 
+  s.homepage          = package["homepage"]
   s.license           = package["license"]
   s.authors           = package["author"]
 
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.preserve_paths    = "ios/**/*"
   s.source_files      = "ios/**/*.{h,m,mm,swift}"
-  
+
   s.vendored_frameworks   = "apple/EsewaSDK.xcframework"
   s.dependency "React-Core"
 end
