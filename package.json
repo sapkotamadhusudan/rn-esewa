@@ -1,6 +1,6 @@
 {
   "name": "rn-esewa",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A library providing Esewa payment integration to react native applications",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
