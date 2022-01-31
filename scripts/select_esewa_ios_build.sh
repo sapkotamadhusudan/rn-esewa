@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ $OSTYPE != 'darwin'* ]]; then
+  echo "This script requires MAC OS"
+  exit 0
+fi
+
 : "${ESEWA_BUILD_DIR:=}"
 
 set -euo pipefail

@@ -9,6 +9,23 @@ A library providing esewa payment integration to react native applications
 >
 > ```"postinstall": "sh node_modules/rn-esewa/scripts/select_esewa_ios_build.sh"```
 >
+> :warning: **For Android development**
+> Please add following code to project level build.gradle
+>
+> ```
+> allprojects {
+>     repositories {
+>       ...
+>        maven {
+>          url = uri("https://maven.pkg.github.com/sapkotamadhusudan/rn-esewa")
+>          credentials {
+>            username = "public"
+>            password = "\u0067hp_6g5exZNHoyx0TlQkEEeMpC4gT7aKhv3hiPHq"
+>          }
+>        }
+>     }
+> }
+>```
 
 
 ## Installation

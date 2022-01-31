@@ -38,7 +38,7 @@ const EsewaPaymentComponent = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Payment Result: ${result}</Text>
+      <Text>Payment Result: {JSON.stringify(result)}</Text>
       <Button title="Pay with Esewa" onPress={payWithEsewa} />
     </View>
   );

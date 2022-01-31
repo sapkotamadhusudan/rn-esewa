@@ -7,12 +7,12 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "postinstall": "sh node_modules/rn-esewa/scripts/select_esewa_ios_build.sh"
+    "postinstall": "sh node_modules/rn-esewa/scripts/select_esewa_ios_build.sh || true"
   },
   "dependencies": {
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "rn-esewa": "file:/Users/logica_beans/Documents/workspace/react-native/library/rn-esewa"
+    "rn-esewa": "file:../"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
